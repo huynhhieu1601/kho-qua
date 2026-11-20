@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Kho quà · Học viện AI Global</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --violet:#7c4dff; --violet-2:#9a6bff; --violet-deep:#5a2fe0; --violet-text:#6d3df0;
+  --ink:#1b1430; --muted:#5f5872; --line:#ece6f4; --panel:#fff; --base:#fbf7f3;
+  --radius:16px; --shadow:0 1px 2px rgba(40,20,80,.04),0 8px 24px -12px rgba(80,40,160,.18);
+  --orange:#f08c00; --orange-deep:#d9480f;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--base);line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(600px 400px at -5% -5%,rgba(255,170,190,.35),transparent 70%),
+             radial-gradient(700px 500px at 105% 0%,rgba(170,140,255,.28),transparent 70%),
+             radial-gradient(800px 600px at 50% 110%,rgba(255,215,190,.35),transparent 70%)}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+@media(min-width:640px){.wrap{padding:0 32px}}
+
+.boot{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted);font-size:15px;text-align:center;padding:24px}
+.boot .bigspin{width:34px;height:34px;border-radius:50%;border:3px solid #e5dbff;border-top-color:var(--violet);animation:sp .85s linear infinite}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img,.brand .mark{width:36px;height:36px;border-radius:9px;flex-shrink:0;object-fit:cover}
+.brand .mark{display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),#ff7aa8);color:#fff;font-weight:800}
+.brand .bn{font-size:20px;font-weight:800;letter-spacing:-.01em;background:linear-gradient(90deg,var(--ink) 55%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ghost{min-height:44px;display:inline-flex;align-items:center;padding:0 14px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--muted);text-decoration:none;transition:.2s}
+.ghost:hover{background:rgba(124,77,255,.08);color:var(--ink)}
+
+.hero{padding:16px 0 8px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:#fff;color:var(--violet-text);font-size:13px;font-weight:600;box-shadow:var(--shadow);border:1px solid var(--line)}
+h1{font-size:clamp(30px,6vw,44px);line-height:1.15;font-weight:800;letter-spacing:-.02em;margin:20px 0 12px}
+h1 .hl{background:linear-gradient(90deg,var(--violet),#b06bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro{max-width:640px;color:var(--muted);font-size:15px;margin:0}
+
+.finder{position:sticky;top:0;z-index:5;padding:14px 0;margin-top:20px;backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px)}
+.finder input{width:100%;height:46px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.9);padding:0 16px 0 44px;font:inherit;font-size:15px;color:var(--ink);outline:none;transition:.2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%237c4dff' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:15px center}
+.finder input:focus{border-color:var(--violet);box-shadow:0 0 0 4px rgba(124,77,255,.15)}
+.empty{display:none;text-align:center;color:var(--muted);padding:32px 0}
+
+.ms{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:20px 16px;margin:16px 0 24px;box-shadow:var(--shadow)}
+@media(min-width:640px){.ms{padding:24px}}
+.ms-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:#efe8ff;color:var(--violet-text)}
+.tag.solid{background:linear-gradient(135deg,var(--violet-deep),var(--violet));color:#fff;box-shadow:0 3px 0 #4420b8,0 8px 16px -6px rgba(90,47,224,.6);font-size:12px;padding:5px 12px}
+.ok{font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;background:#e7f7ee;color:#1f8a52}
+.ok.lock{background:#fff1e0;color:#b4560b}
+.ms h2{font-size:clamp(19px,3vw,22px);font-weight:800;margin:10px 0 18px;letter-spacing:-.01em}
+.grid{display:grid;gap:14px;grid-template-columns:1fr}
+.grid>*{min-width:0}
+@media(min-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+.card{position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;transition:transform .2s,box-shadow .2s;content-visibility:auto;contain-intrinsic-size:auto 170px}
+.card:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(90,47,224,.45)}
+.card h3{font-size:15px;font-weight:700;margin:0 0 6px;line-height:1.35}
+.card p{font-size:13px;color:var(--muted);margin:0 0 16px;flex:1}
+.actions{display:flex;flex-direction:column;gap:10px}
+.btn{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;border:0;text-decoration:none;font:inherit;font-size:14px;font-weight:700;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,var(--violet-deep),var(--violet) 45%,var(--violet-2));box-shadow:0 4px 0 #4420b8,0 10px 20px -10px rgba(90,47,224,.7);transition:transform .12s,box-shadow .12s,filter .2s}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 45%,transparent 60%);transform:translateX(-100%);transition:transform .7s}
+.btn:hover{filter:brightness(1.06)}
+.btn:hover::after{transform:translateX(100%)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #4420b8,0 4px 10px -6px rgba(90,47,224,.7)}
+.btn:focus-visible,.link2:focus-visible{outline:3px solid rgba(124,77,255,.45);outline-offset:2px}
+.btn[disabled]{opacity:.65;cursor:wait}
+.btn svg,.link2 svg{width:16px;height:16px;flex-shrink:0}
+.btn.orange{background:linear-gradient(135deg,var(--orange-deep),var(--orange) 55%,#fab005);box-shadow:0 4px 0 #a33a06,0 12px 24px -12px rgba(217,72,15,.8)}
+.btn.orange:active{box-shadow:0 1px 0 #a33a06}
+.btn.zalo{background:linear-gradient(135deg,#0047d6,#0068ff 55%,#3a8dff);box-shadow:0 4px 0 #0036a3,0 12px 24px -12px rgba(0,104,255,.8)}
+.link2{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:600;color:var(--violet-text);text-decoration:none;min-height:32px}
+.link2:hover{text-decoration:underline}
+.note-sm{display:block;text-align:center;font-size:12.5px;color:var(--muted);margin-top:-2px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:8px 0 48px}
+
+/* Mốc bị khoá */
+.locked .card{filter:blur(3px) grayscale(.3);opacity:.55;pointer-events:none;user-select:none}
+.lockbox{display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px;background:linear-gradient(135deg,#fff8ef,#fff 55%,#f6f0ff);border:1px solid #f2e3cf;border-radius:20px;padding:18px 20px;margin:0 0 18px;box-shadow:0 18px 40px -24px rgba(180,86,11,.45)}
+.lockbox .cup{width:52px;height:52px;flex:none}
+.lockbox .lt{flex:1 1 260px}
+.lockbox h3{font-size:clamp(17px,2.6vw,20px);font-weight:800;margin:0 0 4px}
+.lockbox p{margin:0;color:var(--muted);font-size:14px}
+.lockbox .btn{flex:1 1 200px;max-width:320px;font-size:15px}
+.just-open .card{animation:pop .5s ease both}
+@keyframes pop{0%{transform:scale(.96);opacity:.4}100%{transform:scale(1);opacity:1}}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:80;display:none;align-items:flex-end;justify-content:center;background:rgba(20,12,40,.5);padding:0}
+.modal.open{display:flex}
+@media(min-width:640px){.modal{align-items:center;padding:24px}}
+.mbox{position:relative;width:100%;max-width:480px;max-height:100dvh;overflow:auto;background:#fff;border-radius:22px 22px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom));box-shadow:0 30px 60px -20px rgba(0,0,0,.45);animation:up .25s ease}
+@media(min-width:640px){.mbox{border-radius:22px;max-height:calc(100dvh - 48px)}}
+@keyframes up{from{transform:translateY(30px);opacity:.5}to{transform:none;opacity:1}}
+.mx{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:#f3f0f8;color:var(--muted);font-size:22px;line-height:1;cursor:pointer}
+.mbox h3{font-size:20px;font-weight:800;margin:0 36px 6px 0;line-height:1.3}
+.mbox .sub{color:var(--muted);font-size:14px;margin:0 0 16px}
+.steps{display:flex;gap:6px;margin:0 0 16px}
+.steps i{flex:1;height:4px;border-radius:4px;background:#ece6f4}
+.steps i.on{background:linear-gradient(90deg,var(--orange-deep),var(--orange))}
+.fld{display:block;margin:0 0 12px}
+.fld span{display:block;font-size:13px;font-weight:600;margin:0 0 5px}
+.fld input{width:100%;height:48px;border:1px solid var(--line);border-radius:12px;padding:0 14px;font:inherit;font-size:16px;color:var(--ink);background:#fff;outline:none;transition:.15s}
+.fld input:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(240,140,0,.15)}
+.fld input.bad{border-color:#e03131;box-shadow:0 0 0 4px rgba(224,49,49,.1)}
+.fld em{display:block;font-style:normal;font-size:12.5px;color:#e03131;margin-top:4px;min-height:0}
+.err{color:#e03131;font-size:13.5px;margin:8px 0 0;text-align:center}
+.mbox .btn{width:100%;min-height:50px;font-size:15.5px;margin-top:6px}
+.amount{text-align:center;margin:0 0 12px}
+.amount b{display:block;font-size:30px;font-weight:800;color:var(--orange-deep);letter-spacing:-.01em}
+.amount small{color:var(--muted);font-size:13px}
+.qrw{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;margin:0 auto 14px;max-width:300px;min-height:200px;display:grid;place-items:center}
+.qrw img{width:100%;height:auto;border-radius:8px}
+.rows{display:grid;gap:8px;margin:0 0 12px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.row small{display:block;font-size:11.5px;color:var(--muted);font-weight:600}
+.row b{font-size:15px;word-break:break-word}
+.row.hot{border-color:#ffc078;background:#fff8ef}
+.row.hot b{color:var(--orange-deep);font-size:17px;letter-spacing:.04em}
+.copy{flex:none;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--line);background:#faf7ff;color:var(--violet-text);border-radius:8px;padding:6px 10px;cursor:pointer}
+.waiting{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--muted);margin:4px 0 8px;text-align:center}
+.spin{width:14px;height:14px;border-radius:50%;border:2px solid #ffd8a8;border-top-color:var(--orange);animation:sp 1s linear infinite;flex:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.back{display:block;margin:10px auto 0;background:none;border:0;font:inherit;font-size:13px;color:var(--muted);text-decoration:underline;cursor:pointer}
+.lockbox .lb-act{flex:1 1 200px;max-width:320px;display:flex;flex-direction:column;gap:8px}
+.lockbox .lb-act .btn{max-width:none;flex:none}
+.plink{background:none;border:0;font:inherit;font-size:13.5px;font-weight:700;color:var(--violet-text);text-decoration:underline;cursor:pointer;padding:4px}
+.billcode{text-align:center;border:2px dashed #ffc078;background:#fff8ef;border-radius:14px;padding:12px;margin:0 0 14px}
+.billcode small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.billcode b{display:block;font-size:26px;letter-spacing:.08em;color:var(--orange-deep);margin:2px 0 6px}
+.btn.ghostbtn{background:#fff;color:var(--violet-text);border:1px solid var(--line);box-shadow:none}
+.msg{font-size:13.5px;margin:10px 0 0;text-align:center;color:var(--muted)}
+.msg.warn{color:#b4560b}
+.okicon{width:64px;height:64px;border-radius:50%;margin:4px auto 12px;display:grid;place-items:center;background:#d3f9d8;color:#2b8a3e;font-size:34px}
+.center{text-align:center}
+.toast{position:fixed;top:16px;left:50%;transform:translateX(-50%) translateY(-200%);opacity:0;pointer-events:none;background:#1b1430;color:#fff;padding:10px 16px;border-radius:10px;font-size:13px;z-index:90;transition:.25s}
+.toast.show{transform:translateX(-50%);opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="boot">
+    <div class="bigspin"></div>
+    <div>Đang tải kho quà…</div>
+  </div>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="mbox">
+    <button type="button" class="mx" data-close aria-label="Đóng">×</button>
+    <div class="steps" id="sbar" aria-hidden="true"><i data-s="1"></i><i data-s="2"></i><i data-s="3"></i><i data-s="4"></i></div>
+
+    <!-- Bước 1: form -->
+    <form id="step1" novalidate>
+      <h3 id="mtitle"></h3>
+      <p class="sub" id="mdesc"></p>
+      <label class="fld"><span>Họ và tên</span><input name="name" autocomplete="name" placeholder="Nguyễn Văn A" required><em></em></label>
+      <label class="fld"><span>Số điện thoại có Zalo</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0912 345 678" required><em></em></label>
+      <label class="fld"><span>Email</span><input name="email" type="email" inputmode="email" autocomplete="email" placeholder="ban@gmail.com" required><em></em></label>
+      <button type="submit" class="btn orange" id="b1">Tiếp tục — hiện mã QR</button>
+      <p class="err" id="e1" hidden></p>
+    </form>
+
+    <!-- Bước 2: QR -->
+    <div id="step2" hidden>
+      <h3>Quét mã để thanh toán</h3>
+      <p class="sub">Mở app ngân hàng → quét mã QR. Số tiền và nội dung đã điền sẵn, bạn <b>giữ nguyên nội dung</b> (mã đơn) để mình dễ đối chiếu.</p>
+      <div class="amount"><b id="qamt"></b><small>Mời cà phê</small></div>
+      <div class="qrw"><img id="qimg" alt="Mã QR chuyển khoản" width="300" height="340"></div>
+      <div class="rows" id="qrows"></div>
+      <button type="button" class="btn orange" id="b2">✅ Tôi đã thanh toán</button>
+      <button type="button" class="back" id="bback">← Sửa thông tin</button>
+    </div>
+
+    <!-- Bước 3: gửi bill qua Zalo, chờ duyệt -->
+    <div id="stepBill" hidden>
+      <h3 id="btitle"></h3>
+      <p class="sub" id="bdesc"></p>
+      <div class="billcode"><small>Mã đơn của bạn — gửi kèm bill</small><b id="bcode"></b><button type="button" class="copy" id="bcopy">Sao chép mã</button></div>
+      <a class="btn zalo" id="bzaloadmin" href="https://zalo.me/0382025232" target="_blank" rel="noopener noreferrer">💬 Gửi bill cho Zalo admin để kiểm tra</a>
+      <p class="msg" id="bzalonum" style="margin-top:6px">Zalo admin: zalo.me/0382025232</p>
+      <div class="waiting" id="qwait" style="margin-top:14px"><span class="spin"></span><span>Đang chờ duyệt — trang sẽ tự mở khi được duyệt</span></div>
+      <button type="button" class="btn ghostbtn" id="bcheck">Mình đã được duyệt — Kiểm tra</button>
+      <p class="err" id="e2" hidden></p>
+      <button type="button" class="back" id="bbackqr">← Xem lại mã QR</button>
+    </div>
+
+    <!-- Nhập SĐT để vào (khách đã được duyệt) -->
+    <form id="stepPhone" novalidate hidden>
+      <h3>Nhập số điện thoại để vào</h3>
+      <p class="sub">Dùng đúng số điện thoại bạn đã điền khi mời cà phê.</p>
+      <label class="fld"><span>Số điện thoại có Zalo</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0912 345 678"><em></em></label>
+      <button type="submit" class="btn orange" id="bphone">Vào ngay</button>
+      <div id="phoneMsg" hidden></div>
+      <button type="button" class="back" id="bnew">Chưa mời cà phê? Điền form mở khoá</button>
+    </form>
+
+    <!-- Bước 4: thành công -->
+    <div id="step3" class="center" hidden>
+      <div class="okicon">✓</div>
+      <h3 id="stitle" style="margin-right:0"></h3>
+      <p class="sub" id="sdesc"></p>
+      <a class="btn zalo" id="bzalo" target="_blank" rel="noopener noreferrer" hidden></a>
+      <p class="sub" id="sredir" hidden style="margin-top:10px"></p>
+      <button type="button" class="back" data-close>Xem quà vừa mở</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  // 👇 DÁN LINK WEB APP (/exec) TỪ GOOGLE APPS SCRIPT VÀO DÒNG DƯỚI ĐÂY:
+  var GAS_API_URL = "https://script.google.com/macros/s/AKfycbxVeErNv5ZclhNHj67dtTlsEmVyC5xl7Tkzg5J7V1_Vaf4jUC4vTKJEdmkS1YY2TFdDMQ/exec";
+
+  var S = {}, MS = [];
+  var STORE = "khoqua-order";
+  var order = null, poll = null, pollUntil = 0, justOpened = -1;
+  var unlockedData = null;
+
+  var ICONS = {
+    download:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>',
+    open:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>',
+    secondary:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z" fill="currentColor"/></svg>',
+    gift:'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5M12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></svg>',
+    cup:'<svg class="cup" viewBox="0 0 48 48" fill="none"><path d="M8 18h26v12a10 10 0 0 1-10 10h-6A10 10 0 0 1 8 30z" fill="#f08c00"/><path d="M34 21h3a5 5 0 0 1 0 10h-3" stroke="#d9480f" stroke-width="3"/><path d="M15 6c-2 3 2 4 0 8M22 6c-2 3 2 4 0 8M29 6c-2 3 2 4 0 8" stroke="#c9a27a" stroke-width="2.4" stroke-linecap="round"/><rect x="5" y="40" width="34" height="3" rx="1.5" fill="#d9480f"/></svg>'
+  };
+
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+  function safeUrl(u){ u = String(u || "").trim(); return /^(https?:|mailto:|tel:|zalo:)/i.test(u) ? u : ""; }
+  var ADMIN_ZALO_DEFAULT = "https://zalo.me/0382025232";
+  function adminZalo(){ return safeUrl(S.admin_zalo) || ADMIN_ZALO_DEFAULT; }
+  function money(n){ return Number(n || 0).toLocaleString("vi-VN") + "đ"; }
+  function $(id){ return document.getElementById(id); }
+  function toast(m){ var t = $("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(function(){ t.classList.remove("show"); }, 2600); }
+  function store(v){ try { if (v) localStorage.setItem(STORE, JSON.stringify(v)); else localStorage.removeItem(STORE); } catch(e){} }
+  function loadStore(){ try { return JSON.parse(localStorage.getItem(STORE) || "null"); } catch(e){ return null; } }
+
+  /* Gọi API Apps Script qua fetch() (chuẩn CORS cho Vercel) */
+  function run(fn, arg){
+    if (!GAS_API_URL || GAS_API_URL.indexOf("THAY_MA_DEPLOY") > -1) {
+      return Promise.reject(new Error("Chưa cấu hình link GAS_API_URL trong file index.html"));
+    }
+
+    var req;
+    if (fn === "createOrder") {
+      req = fetch(GAS_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action: "createOrder", form: arg })
+      });
+    } else {
+      var url = new URL(GAS_API_URL);
+      url.searchParams.set("action", fn);
+      if (fn === "checkOrder") url.searchParams.set("code", arg || "");
+      if (fn === "checkPhone") url.searchParams.set("phone", arg || "");
+      req = fetch(url.toString(), { method: "GET" });
+    }
+
+    return req.then(function(r){
+      if (!r.ok) throw new Error("Lỗi máy chủ HTTP " + r.status);
+      return r.json();
+    }).then(function(res){
+      if (!res || !res.ok) throw new Error((res && res.error) || "Lỗi xử lý dữ liệu");
+      return res.data;
+    });
+  }
+
+  /* ---------- Render trang ---------- */
+  function button(b){
+    var url = safeUrl(b.url), type = b.type || "download";
+    if (!url) return '<span class="' + (type === "secondary" ? "link2" : "btn") + '" aria-disabled="true">🔒 ' + esc(b.text) + "</span>";
+    var cls = type === "secondary" ? "link2" : "btn", label = esc(b.text);
+    var inner = (type === "open") ? label + ICONS.open : ICONS[type] + label;
+    return '<a class="' + cls + '" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' + inner + "</a>";
+  }
+  function render(){
+    var h = '<div class="wrap"><header class="top">';
+    var logo = safeUrl(S.logo_url) ? '<img src="' + esc(S.logo_url) + '" alt="" width="36" height="36" onerror="this.outerHTML=\'<span class=&quot;mark&quot;>AI</span>\'">' : '<span class="mark">AI</span>';
+    var home = safeUrl(S.home_url);
+    h += home ? '<a class="brand" href="' + esc(home) + '">' + logo + '<span class="bn">' + esc(S.brand_name) + "</span></a>" : '<div class="brand">' + logo + '<span class="bn">' + esc(S.brand_name) + "</span></div>";
+    if (S.exit_text && safeUrl(S.exit_url)) h += '<a class="ghost" href="' + esc(S.exit_url) + '">' + esc(S.exit_text) + "</a>";
+    h += "</header><main><section class=\"hero\">";
+    if (S.badge) h += '<span class="pill">' + ICONS.gift + esc(S.badge) + "</span>";
+    h += "<h1>" + esc(S.title) + ' <span class="hl">' + esc(S.title_highlight) + "</span></h1>";
+    if (S.intro) h += '<p class="intro">' + esc(S.intro) + "</p>";
+    h += "</section>";
+    h += '<div class="finder"><input id="q" type="search" placeholder="' + esc(S.search_placeholder || "Tìm quà…") + '" aria-label="Tìm quà" autocomplete="off"></div>';
+
+    MS.forEach(function(m, i){
+      var isLocked = m.locked && !(unlockedData && unlockedData[m.label]);
+      var items = (!isLocked && m.locked) ? unlockedData[m.label] : m.items;
+      h += '<section class="ms' + (isLocked ? " locked" : "") + (justOpened === i ? " just-open" : "") + '" data-ms data-i="' + i + '"><div class="ms-head">' +
+           '<span class="' + (m.highlight ? "tag solid" : "tag") + '">' + esc(m.label) + "</span>" +
+           (isLocked ? '<span class="ok lock">🔒 Chưa mở khoá</span>' : (m.status ? '<span class="ok">' + esc(m.status) + "</span>" : "")) +
+           "</div><h2>" + esc(m.title) + "</h2>";
+      if (isLocked) {
+        h += '<div class="lockbox">' + ICONS.cup + '<div class="lt"><h3>' + esc(S.lock_title) + "</h3><p>" + esc(S.lock_desc) + "</p></div>" +
+             '<div class="lb-act"><button type="button" class="btn orange" data-openlock>' + esc(S.lock_button || "Mở khoá ngay") + "</button>" +
+             '<button type="button" class="plink" data-openphone>' + esc(S.phone_link || "Đã được duyệt? Nhập SĐT để vào") + "</button></div></div>";
+      }
+      h += '<div class="grid"' + (isLocked ? ' aria-hidden="true"' : "") + ">";
+      (items || []).forEach(function(it){
+        h += '<article class="card" data-search="' + esc((it.title + " " + it.desc).toLowerCase()) + '"><h3>' + esc(it.title) + "</h3><p>" + esc(it.desc) + '</p><div class="actions">' +
+             (it.buttons || []).map(button).join("") + (it.note ? '<small class="note-sm">' + esc(it.note) + "</small>" : "") + "</div></article>";
+      });
+      h += "</div></section>";
+    });
+    h += '<p class="empty" id="empty">Không tìm thấy món quà phù hợp.</p></main>';
+    if (S.footer) h += "<footer>" + esc(S.footer) + "</footer>";
+    h += "</div>";
+    $("app").innerHTML = h;
+    justOpened = -1;
+    bindSearch();
+  }
+  function bindSearch(){
+    var q = $("q"); if (!q) return;
+    var norm = function(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d"); };
+    var cards = [].slice.call(document.querySelectorAll(".card"));
+    cards.forEach(function(c){ c._s = norm(c.getAttribute("data-search")); });
+    q.addEventListener("input", function(){
+      var v = norm(q.value.trim()), any = false;
+      cards.forEach(function(c){ var ok = !v || c._s.indexOf(v) > -1; c.hidden = !ok; if (ok) any = true; });
+      [].forEach.call(document.querySelectorAll("[data-ms]"), function(s){ s.hidden = !s.querySelector(".card:not([hidden])"); });
+      $("empty").style.display = any ? "none" : "block";
+    });
+  }
+
+  /* ---------- Modal ---------- */
+  function step(n){
+    var map = { 1: "step1", 2: "step2", 3: "stepBill", 4: "step3", phone: "stepPhone" };
+    Object.keys(map).forEach(function(k){ $(map[k]).hidden = (String(k) !== String(n)); });
+    $("sbar").hidden = (n === "phone");
+    [].forEach.call(document.querySelectorAll(".steps i"), function(el){ el.classList.toggle("on", +el.dataset.s <= n); });
+    if (n === 2 || n === 3) startPoll(); else stopPoll();
+  }
+  function showBill(){
+    $("btitle").textContent = S.bill_title || "Gửi bill để được duyệt";
+    $("bdesc").textContent = S.bill_desc || "";
+    $("bcode").textContent = order.code;
+    var z = adminZalo(), a = $("bzaloadmin");
+    a.href = z; a.innerHTML = "💬 " + esc(S.bill_button || "Gửi bill cho Zalo admin để kiểm tra");
+    $("bzalonum").textContent = "Zalo admin: " + z.replace(/^https?:\/\/(www\.)?/, "");
+    $("e2").hidden = true;
+    step(3);
+  }
+  function openModal(){
+    $("mtitle").textContent = S.lock_title || "Mở khoá";
+    $("mdesc").textContent = S.lock_desc || "";
+    $("modal").classList.add("open"); document.body.style.overflow = "hidden";
+    if (order && order.code && order.qr) { showQR(order); if (order.billSent) showBill(); else step(2); }
+    else {
+      step(1);
+      var f = $("step1"); if (order && order.form) { f.name.value = order.form.name || ""; f.phone.value = order.form.phone || ""; f.email.value = order.form.email || ""; }
+      setTimeout(function(){ f.name.focus(); }, 50);
+    }
+  }
+  function closeModal(){ $("modal").classList.remove("open"); document.body.style.overflow = ""; stopPoll(); }
+
+  function validate(f){
+    var ok = true;
+    var set = function(inp, msg){ inp.classList.toggle("bad", !!msg); inp.parentNode.querySelector("em").textContent = msg || ""; if (msg) ok = false; };
+    var name = f.name.value.trim(), phone = f.phone.value.replace(/[^\d+]/g, "").replace(/^\+84/, "0").replace(/^84(?=\d{9}$)/, "0"), email = f.email.value.trim();
+    set(f.name, name.length < 2 ? "Vui lòng nhập họ tên" : "");
+    set(f.phone, /^0(3|5|7|8|9)\d{8}$/.test(phone) ? "" : "Số điện thoại 10 số, ví dụ 0912345678");
+    set(f.email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? "" : "Email chưa đúng");
+    return ok ? { name: name, phone: phone, email: email } : null;
+  }
+
+  $("step1").addEventListener("submit", function(e){
+    e.preventDefault();
+    var data = validate(this); if (!data) return;
+    var b = $("b1"), err = $("e1"); err.hidden = true;
+    b.disabled = true; b.textContent = "Đang tạo mã QR…";
+    run("createOrder", data).then(function(res){
+      order = res; order.form = data; store(order);
+      if (res.paid) return onPaid(res, false);
+      showQR(res); step(2);
+      if (res.billSent) showBill();
+    }).catch(function(e){ err.textContent = e.message || "Có lỗi, bạn thử lại nhé."; err.hidden = false; })
+      .then(function(){ b.disabled = false; b.textContent = "Tiếp tục — hiện mã QR"; });
+  });
+
+  function showQR(o){
+    $("qamt").textContent = money(o.amount);
+    var img = $("qimg"); if (img.getAttribute("src") !== o.qr) img.src = o.qr;
+    var row = function(label, val, copy, hot){ return '<div class="row' + (hot ? " hot" : "") + '"><div><small>' + esc(label) + "</small><b>" + esc(val) + "</b></div>" + (copy ? '<button type="button" class="copy" data-copy="' + esc(copy) + '">Sao chép</button>' : "") + "</div>"; };
+    $("qrows").innerHTML =
+      row("Ngân hàng", o.bankName) +
+      row("Số tài khoản", String(o.accountNumber).replace(/(\d{4})(?=\d)/g, "$1 "), o.accountNumber) +
+      row("Chủ tài khoản", o.accountName) +
+      row("Số tiền", money(o.amount), String(o.amount)) +
+      row("Nội dung chuyển khoản (bắt buộc)", o.code, o.code, true);
+  }
+
+  function startPoll(){
+    if (poll) return;
+    pollUntil = Date.now() + 2 * 3600 * 1000;
+    poll = setInterval(function(){
+      if (Date.now() > pollUntil) { stopPoll(); return; }
+      if (!document.hidden) check(false);
+    }, 8000);
+  }
+  function stopPoll(){ if (poll) clearInterval(poll); poll = null; }
+
+  var checking = false;
+  function check(manual){
+    if (!order || !order.code || checking) return;
+    checking = true;
+    var b = $("bcheck"); if (manual) { b.disabled = true; b.textContent = "Đang kiểm tra…"; $("e2").hidden = true; }
+    run("checkOrder", order.code).then(function(res){
+      if (res.paid) return onPaid(res, manual);
+      if (res.notFound) { store(null); order = null; if (manual) { $("e2").textContent = "Không tìm thấy đơn. Bạn điền lại thông tin nhé."; $("e2").hidden = false; } return; }
+      if (manual) { $("e2").innerHTML = 'Đơn chưa được duyệt. Bạn đã gửi bill cho <a href="' + esc(adminZalo()) + '" target="_blank" rel="noopener noreferrer"><b>Zalo admin</b></a> chưa? Admin duyệt xong trang sẽ tự mở.'; $("e2").hidden = false; }
+    }).catch(function(e){ if (manual) { $("e2").textContent = e.message || "Lỗi kết nối, thử lại nhé."; $("e2").hidden = false; } })
+      .then(function(){ checking = false; if (manual) { b.disabled = false; b.textContent = "Mình đã được duyệt — Kiểm tra"; } });
+  }
+
+  function onPaid(res, userGesture){
+    stopPoll();
+    unlockedData = res.unlocked || {};
+    order = { code: res.code, paid: true }; store(order);
+    var idx = -1; MS.forEach(function(m, i){ if (m.locked && idx < 0) idx = i; });
+    justOpened = idx; render();
+    $("stitle").textContent = S.success_title || "Thanh toán thành công!";
+    $("sdesc").textContent = S.success_desc || "";
+    var z = safeUrl(res.zalo), bz = $("bzalo");
+    if (z) { bz.href = z; bz.textContent = S.zalo_button || "Vào nhóm Zalo"; bz.hidden = false; } else bz.hidden = true;
+    if (!$("modal").classList.contains("open")) { $("modal").classList.add("open"); document.body.style.overflow = "hidden"; }
+    step(4);
+    var auto = /^(có|co|yes|true|1|x)$/i.test(String(S.auto_redirect || "").trim());
+    if (z && auto) {
+      var n = 3, msg = $("sredir"); msg.hidden = false;
+      var tick = function(){
+        if (!$("modal").classList.contains("open") || $("step3").hidden) return;
+        if (n <= 0) { msg.textContent = "Nếu chưa tự chuyển, bạn bấm nút xanh ở trên nhé."; window.location.href = z; return; }
+        msg.textContent = "Tự chuyển sang nhóm Zalo sau " + n + " giây…"; n--; setTimeout(tick, 1000);
+      };
+      tick();
+    }
+  }
+
+  /* ---------- Sự kiện ---------- */
+  document.addEventListener("click", function(e){
+    if (e.target.closest("[data-openlock]")) return openModal();
+    if (e.target.closest("[data-openphone]")) return openPhone();
+    if (e.target.closest("[data-close]") || e.target === $("modal")) return closeModal();
+    var cp = e.target.closest("[data-copy]");
+    if (cp) {
+      var t = cp.dataset.copy, done = function(){ var o = cp.textContent; cp.textContent = "Đã chép ✓"; setTimeout(function(){ cp.textContent = o; }, 1500); };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(done, function(){ fb(t); done(); }); else { fb(t); done(); }
+    }
+  });
+  function fb(s){ var ta = document.createElement("textarea"); ta.value = s; ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); } catch(e){} ta.remove(); }
+  $("b2").addEventListener("click", function(){ order.billSent = true; store(order); showBill(); });
+  $("bcheck").addEventListener("click", function(){ check(true); });
+  $("bbackqr").addEventListener("click", function(){ step(2); });
+  $("bcopy").addEventListener("click", function(){ var b = this; fb(order.code); try { navigator.clipboard && navigator.clipboard.writeText(order.code); } catch(e){} b.textContent = "Đã chép ✓"; setTimeout(function(){ b.textContent = "Sao chép mã"; }, 1500); });
+  $("bnew").addEventListener("click", function(){ order = order && order.code ? order : null; step(1); setTimeout(function(){ $("step1").name.focus(); }, 50); });
+
+  function openPhone(){
+    $("modal").classList.add("open"); document.body.style.overflow = "hidden";
+    $("phoneMsg").hidden = true; step("phone");
+    var f = $("stepPhone"); if (order && order.form && !f.phone.value) f.phone.value = order.form.phone || "";
+    setTimeout(function(){ f.phone.focus(); }, 50);
+  }
+  $("stepPhone").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = this, inp = f.phone, em = inp.parentNode.querySelector("em"), msg = $("phoneMsg"), b = $("bphone");
+    var phone = inp.value.replace(/[^\d+]/g, "").replace(/^\+84/, "0").replace(/^84(?=\d{9}$)/, "0");
+    var bad = !/^0(3|5|7|8|9)\d{8}$/.test(phone);
+    inp.classList.toggle("bad", bad); em.textContent = bad ? "Số điện thoại 10 số, ví dụ 0912345678" : ""; if (bad) return;
+    msg.hidden = true; b.disabled = true; b.textContent = "Đang kiểm tra…";
+    run("checkPhone", phone).then(function(res){
+      if (res.paid) return onPaid(res, true);
+      var z = adminZalo();
+      if (res.pending) {
+        order = order && order.code === res.code ? order : { code: res.code, form: { phone: phone } };
+        order.billSent = true; store(order);
+        msg.innerHTML = '<p class="msg warn">Đơn <b>' + esc(res.code) + '</b> của bạn đang chờ duyệt. Gửi bill qua Zalo để được duyệt nhanh nhé.</p>' +
+          (z ? '<a class="btn zalo" style="margin-top:10px" href="' + esc(z) + '" target="_blank" rel="noopener noreferrer">💬 ' + esc(S.bill_button || "Gửi bill qua Zalo") + "</a>" : "");
+      } else {
+        msg.innerHTML = '<p class="msg warn">Chưa tìm thấy số này. Nếu bạn chưa mời cà phê, bấm "Điền form mở khoá" bên dưới nhé.</p>';
+      }
+      msg.hidden = false;
+    }).catch(function(e){ msg.innerHTML = '<p class="err">' + esc(e.message || "Lỗi kết nối, thử lại nhé.") + "</p>"; msg.hidden = false; })
+      .then(function(){ b.disabled = false; b.textContent = "Vào ngay"; });
+  });
+  $("bback").addEventListener("click", function(){ var f = order && order.form; order = { form: f }; store(order); openModal(); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && $("modal").classList.contains("open")) closeModal(); });
+
+  /* ---------- Khởi động ---------- */
+  run("init").then(function(payload){
+    S = payload.s || {};
+    MS = payload.milestones || [];
+    if (S.page_title) document.title = S.page_title;
+    if (/^https:\/\/.+\.(png|ico)(\?.*)?$/i.test(S.logo_url || "")) {
+      var link = document.createElement("link");
+      link.rel = "icon";
+      link.href = S.logo_url;
+      document.head.appendChild(link);
+    }
+
+    render();
+    order = loadStore();
+    if (order && order.code) {
+      run("checkOrder", order.code).then(function(res){
+        if (res.paid) { unlockedData = res.unlocked || {}; order = { code: res.code, paid: true }; store(order); render(); }
+        else if (res.notFound) { store(null); order = null; }
+        else if (order.paid) { order = null; store(null); }
+      }).catch(function(){});
+    }
+  }).catch(function(err){
+    $("app").innerHTML = '<div class="boot"><div style="color:#e03131;font-weight:700">Không tải được dữ liệu kho quà</div><div style="font-size:13px">' + esc(err.message) + '</div></div>';
+  });
+})();
+</script>
+</body>
+</html>
